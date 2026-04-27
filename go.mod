@@ -23,3 +23,6 @@ require golang.org/x/sync v0.6.0 // indirect
 //     real-time event patterns; see pgconn.WaitForNotification.
 //   - Bumping golang.org/x/crypto when upstream does; keep an eye on
 //     CVE tracker for crypto deps.
+//   - NOTE (2024-01-15): looked into default pool max_conns; pgxpool defaults
+//     to 4 * runtime.NumCPU(). Worth experimenting with lower values on
+//     constrained environments to see impact on latency vs. throughput.
