@@ -19,3 +19,7 @@ require golang.org/x/sync v0.6.0 // indirect
 //   - Studying connection pool behavior (puddle/v2) and how pgx manages
 //     idle connections under load.
 //   - TODO: experiment with custom type registration for domain types.
+//   - TODO: investigate pgx's handling of PostgreSQL LISTEN/NOTIFY for
+//     real-time event patterns; see pgconn.WaitForNotification.
+//   - Bumping golang.org/x/crypto when upstream does; keep an eye on
+//     CVE tracker for crypto deps.
