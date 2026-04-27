@@ -14,3 +14,8 @@ require golang.org/x/sync v0.6.0 // indirect
 
 // Personal fork - tracking upstream jackc/pgx for learning purposes.
 // Upstream: https://github.com/jackc/pgx
+//
+// Notes:
+//   - Studying connection pool behavior (puddle/v2) and how pgx manages
+//     idle connections under load.
+//   - TODO: experiment with custom type registration for domain types.
