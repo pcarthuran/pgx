@@ -26,3 +26,7 @@ require golang.org/x/sync v0.6.0 // indirect
 //   - NOTE (2024-01-15): looked into default pool max_conns; pgxpool defaults
 //     to 4 * runtime.NumCPU(). Worth experimenting with lower values on
 //     constrained environments to see impact on latency vs. throughput.
+//   - NOTE (2024-03-02): tested pool with MaxConns=8 on a 2-core dev box;
+//     saw diminishing returns past 6 conns under synthetic pgbench load.
+//     Keeping this note as a reminder to revisit on the staging box (8-core)
+//     before drawing any real conclusions.
