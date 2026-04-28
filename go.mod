@@ -34,3 +34,7 @@ require golang.org/x/sync v0.6.0 // indirect
 //     be around MaxConns=20 for our mixed read/write workload. Beyond that,
 //     PostgreSQL-side lock contention starts to dominate. Will open a doc
 //     issue upstream suggesting a note about this in the pgxpool README.
+//   - NOTE (2024-09-04): started looking into MinConns behavior; keeping a
+//     small MinConns=2 seems to help avoid cold-start latency spikes on
+//     low-traffic services that still need occasional fast responses. May
+//     be worth documenting as a recommended baseline for such workloads.
