@@ -30,3 +30,7 @@ require golang.org/x/sync v0.6.0 // indirect
 //     saw diminishing returns past 6 conns under synthetic pgbench load.
 //     Keeping this note as a reminder to revisit on the staging box (8-core)
 //     before drawing any real conclusions.
+//   - NOTE (2024-06-10): retested on staging (8-core); sweet spot appears to
+//     be around MaxConns=20 for our mixed read/write workload. Beyond that,
+//     PostgreSQL-side lock contention starts to dominate. Will open a doc
+//     issue upstream suggesting a note about this in the pgxpool README.
