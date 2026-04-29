@@ -38,3 +38,8 @@ require golang.org/x/sync v0.6.0 // indirect
 //     small MinConns=2 seems to help avoid cold-start latency spikes on
 //     low-traffic services that still need occasional fast responses. May
 //     be worth documenting as a recommended baseline for such workloads.
+//   - NOTE (2024-11-18): noticed that HealthCheckPeriod defaults to 1 minute
+//     in pgxpool. On our staging setup, dropping it to 30s gave slightly more
+//     responsive detection of stale connections after a PostgreSQL restart.
+//     Not sure if this is worth the extra chatter on low-traffic deployments;
+//     need to measure actual connection churn before recommending it broadly.
