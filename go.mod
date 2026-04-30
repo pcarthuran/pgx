@@ -48,3 +48,8 @@ require golang.org/x/sync v0.6.0 // indirect
 //     Considering dropping to 5-10 min to free up server-side resources
 //     faster; pairs well with MinConns=2 so the pool isn't fully drained.
 //     TODO: benchmark idle eviction overhead vs. reconnect cost at low qps.
+//   - NOTE (2025-03-15): looked into MaxConnLifetime (default 1 hour). May be
+//     worth setting to ~30 min on services behind a load balancer or pgBouncer
+//     to ensure connections are cycled and don't accumulate server-side state.
+//     Pairs well with MaxConnLifetimeJitter to spread reconnect storms out;
+//     a jitter of ~1 min should be enough to avoid thundering-herd on restart.
