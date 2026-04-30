@@ -43,3 +43,8 @@ require golang.org/x/sync v0.6.0 // indirect
 //     responsive detection of stale connections after a PostgreSQL restart.
 //     Not sure if this is worth the extra chatter on low-traffic deployments;
 //     need to measure actual connection churn before recommending it broadly.
+//   - NOTE (2025-01-07): looked into MaxConnIdleTime (default 30 min). On
+//     low-traffic services, idle connections linger longer than needed.
+//     Considering dropping to 5-10 min to free up server-side resources
+//     faster; pairs well with MinConns=2 so the pool isn't fully drained.
+//     TODO: benchmark idle eviction overhead vs. reconnect cost at low qps.
